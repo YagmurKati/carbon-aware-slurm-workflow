@@ -229,15 +229,16 @@ This method gives users direct control. They decide which **processes** can wait
 
 ### References
 
-[1] Google Research. *Carbon-Aware Computing for Datacenters*. arXiv:2106.11750, 2021. https://arxiv.org/abs/2106.11750
+[1] A. Radovanovic et al. Google Research. *Carbon-Aware Computing for Datacenters*. arXiv:2106.11750, 2021. https://arxiv.org/abs/2106.11750
 
-[2] D. Li et al. *CASPER: Carbon-Aware Scheduling and Provisioning for Distributed Web Services*. arXiv:2403.14792, 2024. https://arxiv.org/abs/2403.14792
+[2] A. Souza et al. *CASPER: Carbon-Aware Scheduling and Provisioning for Distributed Web Services*. arXiv:2403.14792, 2024. https://arxiv.org/abs/2403.14792
 
-[3] S. Ren et al. *LACS: Learning-Augmented Algorithms for Carbon-Aware Resource Scaling with Uncertain Demand*. arXiv:2404.15211, 2024. https://arxiv.org/abs/2404.15211
+[3] R. Bostandoost et al. *LACS: Learning-Augmented Algorithms for Carbon-Aware Resource Scaling with Uncertain Demand*. arXiv:2404.15211, 2024. https://arxiv.org/abs/2404.15211
 
-[4] K. Yang et al. *PCAPS: Carbon- and Precedence-Aware Scheduling for Data Processing Clusters*. arXiv:2502.09717, 2025. https://arxiv.org/abs/2502.09717
+[4] A. Lechowicz et al. *PCAPS: Carbon- and Precedence-Aware Scheduling for Data Processing Clusters*. arXiv:2502.09717, 2025. https://arxiv.org/abs/2502.09717
 
-[5] A. Basso et al. *GAIA: Green for Less Green — Carbon-Aware Scheduling in Cloud Computing*. ASPLOS 2024. https://lass.cs.umass.edu/papers/pdf/asplos24-greenforlessgreen.pdf
+[5] W. A. Hanafy et al. *GAIA: Going Green for Less Green: Optimizing the Cost of
+Reducing Cloud Carbon Emissions*. ASPLOS 2024. https://lass.cs.umass.edu/papers/pdf/asplos24-greenforlessgreen.pdf
 
 [6] ElectricityMap. *Live carbon intensity data*. https://www.electricitymap.org/
 
