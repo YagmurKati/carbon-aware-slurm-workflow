@@ -242,6 +242,7 @@ Reducing Cloud Carbon Emissions*. ASPLOS 2024. https://lass.cs.umass.edu/papers/
 
 [6] ElectricityMap. *Live carbon intensity data*. https://www.electricitymap.org/
 
+[7] A. Radovanovic. 2020. Our data centers now work harder when the sun shines and wind blows. Google. https://blog.google/inside-google/infrastructure/data-centers-work-harder-sun-shines-wind-blows/
 
 ## 📬 Contact
 
