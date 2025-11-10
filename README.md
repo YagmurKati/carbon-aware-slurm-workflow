@@ -1,4 +1,4 @@
-# 🌱 Carbon-Aware SLURM Workflow using Nextflow
+# Carbon-Aware SLURM Workflow using Nextflow
 
 This repository provides a Nextflow-based workflow for SLURM clusters (tested on HPC@HU) that delays **energy-intensive jobs** until carbon intensity is below a user-defined threshold. It integrates live data from [ElectricityMap](https://www.electricitymap.org/) along with daylight window filtering.
 
@@ -8,15 +8,15 @@ This repository provides a Nextflow-based workflow for SLURM clusters (tested on
 
 Before running the workflow, ensure the following are available:
 
-- ✅ Java 11+
-- ✅ Nextflow
-- ✅ SLURM cluster access with job submission rights
-- ✅ `jq` binary (placed in `$HOME/jq`)
-- ✅ ElectricityMap API token
+- Java 11+
+- Nextflow
+- SLURM cluster access with job submission rights
+- `jq` binary (placed in `$HOME/jq`)
+- ElectricityMap API token
 
 ## Required Setup
 
-### 🔑 ElectricityMap API Token
+### ElectricityMap API Token
 
 Before running the workflow, you must provide your own API token:
 
@@ -42,7 +42,7 @@ echo 'source "$HOME/.sdkman/bin/sdkman-init.sh"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### 🧰 jq (JSON processor)
+### jq (JSON processor)
 
 If jq is not available via modules:
 ```bash
@@ -68,7 +68,7 @@ module load nextflow
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Submit the Nextflow job in held state
 
@@ -111,14 +111,14 @@ The script will check carbon intensity hourly for up to 24 hours. When condition
 
 💡 *To enable optional processes, uncomment them in the `workflow {}` block of `green_controlled_workflow.nf`.*
 
-## 📜 Script Overview: `slurm_green_scheduler.sh`
+## Script Overview: `slurm_green_scheduler.sh`
 
 This script delays SLURM job execution until the grid is "green enough" based on real-time carbon intensity data from [ElectricityMap](https://www.electricitymap.org/).
 
-- ✅ It checks the carbon intensity for a given zone (e.g., Germany: `"DE"`).
-- ♻️ If the intensity is below a user-defined threshold (e.g., **250 gCO₂eq/kWh**), the job is released using `scontrol release`.
-- 🕒 Otherwise, it waits **1 hour** and checks again — up to **24 hours total**.
-- 📝 All actions are logged to `carbon_scheduler_log.txt`.
+- It checks the carbon intensity for a given zone (e.g., Germany: `"DE"`).
+- If the intensity is below a user-defined threshold (e.g., **250 gCO₂eq/kWh**), the job is released using `scontrol release`.
+- Otherwise, it waits **1 hour** and checks again — up to **24 hours total**.
+- All actions are logged to `carbon_scheduler_log.txt`.
 
 > **Important:**  
 > You must edit `slurm_green_scheduler.sh` and add your own ElectricityMap API token:
@@ -127,7 +127,7 @@ This script delays SLURM job execution until the grid is "green enough" based on
 > AUTH_TOKEN="YOUR_API_KEY"
 > ```
 
-## 🌿 Workflow: `green_controlled_workflow.nf`
+## Workflow: `green_controlled_workflow.nf`
 
 This Nextflow script integrates carbon-aware job scheduling using SLURM and real-time electricity carbon intensity data from `slurm_green_scheduler.sh`.
 
@@ -139,23 +139,23 @@ This Nextflow script integrates carbon-aware job scheduling using SLURM and real
 - `standard_task`, `longrun_task`: Always run immediately, without green scheduling.
 - `highenergy_memory_task`, `gpu_task`: Optional energy-aware jobs (commented out by default).
 
-> 💤 Each process currently uses `sleep 30` as a placeholder — replace these lines with your actual job logic or scripts.
+> Each process currently uses `sleep 30` as a placeholder — replace these lines with your actual job logic or scripts.
 
-> ⚠️ Note: The real carbon-aware scheduling logic is implemented in `slurm_green_scheduler.sh`; this `.nf` file simply integrates its result via the `calculate_daylight_start` process.
+> Note: The real carbon-aware scheduling logic is implemented in `slurm_green_scheduler.sh`; this `.nf` file simply integrates its result via the `calculate_daylight_start` process.
 
-## ⚙️ SLURM Configuration: `nextflow.config`
+## SLURM Configuration: `nextflow.config`
 
 This file defines resource requirements and partition settings for each task label in the workflow. Each `process` label in the `.nf` file (e.g., `standard_partition`, `gpu_partition`) maps to SLURM parameters here.
 
 Key highlights:
 
-- ✅ Adjust `cpus`, `memory`, and `time` according to your cluster limits.
-- 💡 Tasks like `highenergy_std_task` or `gpu_task` inherit these settings based on their label.
-- ⚠️ Make sure your SLURM queue names (e.g., `'standard'`, `'gpu'`) match your institution's configuration.
+- Adjust `cpus`, `memory`, and `time` according to your cluster limits.
+- Tasks like `highenergy_std_task` or `gpu_task` inherit these settings based on their label.
+- Make sure your SLURM queue names (e.g., `'standard'`, `'gpu'`) match your institution's configuration.
 
 > No changes needed unless your cluster uses different queue names or has stricter resource constraints.
 
-## 🚀 SLURM Job Script: `nextflow_job.slurm`
+## SLURM Job Script: `nextflow_job.slurm`
 
 This script submits the green-controlled workflow to SLURM.
 
@@ -202,7 +202,7 @@ vi .command.err     # Error output (if any)
 vi .command.out     # Standard output
 ```
 
-### 🧼 Cleanup
+### Cleanup
 
 To remove all intermediate files and cached Nextflow metadata, run:
 ```bash
@@ -210,7 +210,7 @@ rm -rf work/ .nextflow/ .nextflow.log nextflow_output.log nextflow_error.log
 ```
 This resets the environment for a clean re-run.
 
-## 🌍 Adaptation to Other Regions
+## Adaptation to Other Regions
 
 To adapt for other countries or cities:
 
@@ -221,7 +221,7 @@ To adapt for other countries or cities:
 
 ---
 
-## 🌍 Why Carbon-Aware Scheduling?
+## Why Carbon-Aware Scheduling?
 
 High-performance computing uses a significant amount of electricity, often when the grid relies on fossil fuels. By delaying **non-urgent, energy-intensive processes** until periods of **lower carbon intensity**, it's possible to reduce the **CO₂ equivalent emissions** of scientific computing.
 
@@ -244,12 +244,12 @@ Reducing Cloud Carbon Emissions*. ASPLOS 2024. https://lass.cs.umass.edu/papers/
 
 [7] A. Radovanovic. 2020. Our data centers now work harder when the sun shines and wind blows. Google. https://blog.google/inside-google/infrastructure/data-centers-work-harder-sun-shines-wind-blows/
 
-## 📬 Contact
+## Contact
 
 Questions, issues, or suggestions?
 **Yagmur Kati** – [yagmur.kati@hu-berlin.de](mailto:yagmur.kati@hu-berlin.de)
 
-## 📖 Citation
+## Citation
 
 If you use this workflow in your research or HPC projects, please cite:
 
