@@ -249,12 +249,3 @@ Reducing Cloud Carbon Emissions*. ASPLOS 2024. https://lass.cs.umass.edu/papers/
 Questions, issues, or suggestions?
 **Yagmur Kati** – [yagmur.kati@hu-berlin.de](mailto:yagmur.kati@hu-berlin.de)
 
-## Citation
-
-If you use this workflow in your research or HPC projects, please cite:
-
-**Yagmur Kati**
-*Carbon-Aware SLURM Workflow with Nextflow*
-Humboldt-Universität zu Berlin, 2025
-GitHub: [https://github.com/YagmurKati/carbon-aware-slurm-workflow](https://github.com/YagmurKati/carbon-aware-slurm-workflow)
-
