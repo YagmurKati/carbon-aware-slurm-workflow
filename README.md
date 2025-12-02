@@ -4,7 +4,7 @@ This repository provides a Nextflow-based workflow for SLURM clusters (tested on
 
 ---
 
-## 🔧 Prerequisites
+## Prerequisites
 
 Before running the workflow, ensure the following are available:
 
@@ -28,7 +28,7 @@ Before running the workflow, you must provide your own API token:
 AUTH_TOKEN="YOUR_API_TOKEN_HERE"
 ```
 
-### 🛠 Java (via SDKMAN)
+### Java (via SDKMAN)
 
 If Java is not already available on your system:
 ```bash
@@ -54,7 +54,7 @@ Make sure your script references the correct path in slurm_green_scheduler.sh:
 JQ="$HOME/jq"
 ```
 
-### ⚡ Nextflow
+### Nextflow
 
 Install locally:
 ```bash
@@ -86,7 +86,7 @@ chmod +x slurm_green_scheduler.sh
 ```
 The script will check carbon intensity hourly for up to 24 hours. When conditions are met, the SLURM job is released automatically.
 
-## 📁 Repository Contents
+## Repository Contents
 ```bash
 .
 ├── green_controlled_workflow.nf     # Main Nextflow workflow
@@ -96,7 +96,7 @@ The script will check carbon intensity hourly for up to 24 hours. When condition
 └── README.md                        # Documentation
 ```
 
-## ⚙️ Workflow Details
+## Workflow Details
 
 ### Processes Included
 
@@ -109,7 +109,7 @@ The script will check carbon intensity hourly for up to 24 hours. When condition
 | `highenergy_memory_task`  | Memory-intensive task _(optional)_    | Runs only under green conditions; assigned to `large_memory` partition|
 | `gpu_task`                | GPU-accelerated task _(optional)_     | Runs only under green conditions; assigned to `gpu` partition         |
 
-💡 *To enable optional processes, uncomment them in the `workflow {}` block of `green_controlled_workflow.nf`.*
+*To enable optional processes, uncomment them in the `workflow {}` block of `green_controlled_workflow.nf`.*
 
 ## Script Overview: `slurm_green_scheduler.sh`
 
@@ -169,24 +169,24 @@ This script submits the green-controlled workflow to SLURM.
   - `-with-report`: creates a summary report (HTML)
   - `-with-timeline`: shows task execution over time
 
-## 📊 Monitoring & Logs
+## Monitoring & Logs
 
 Once the workflow is submitted and running, you can track its progress and investigate results using the following tools:
 
-### 🔍 Check Job Progress and SLURM Output
+### Check Job Progress and SLURM Output
 
 ```bash
 squeue -u $USER          # Show your queued or running jobs  
 sacct -j <JOB_ID>        # Detailed info about a finished job
 ```
-### 📂 Inspect Nextflow Logs
+### Inspect Nextflow Logs
 
 These are created by your nextflow_job.slurm submission script:
 ```bash
 vi nextflow_output.log   # General workflow progress  
 vi nextflow_error.log    # Any errors from Nextflow
 ```
-### 🔬 Examine Individual Process Logs
+### Examine Individual Process Logs
 
 Each Nextflow task is run in its own subdirectory under work/:
 ```bash
