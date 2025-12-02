@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this workflow in your research or HPC projects, please cite it as below."
-title: "Carbon-Aware SLURM Workflow with Nextflow"
+title: "Carbon-Aware SLURM Workflow using Nextflow"
 type: software
 authors:
   - family-names: "Kati"
